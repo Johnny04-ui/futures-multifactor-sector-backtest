@@ -1,9 +1,17 @@
 # Futures Multi-Factor Sector Backtest
 
-A compact Python research project for building and evaluating a daily futures
-portfolio from minute-level TWAP data. The workflow trains one parameter set per
-sector, ranks sectors using the training sample only, and evaluates the selected
-portfolio on a held-out period.
+> **Systematic futures research · Factor engineering · Portfolio construction · Out-of-sample validation**
+
+An end-to-end Python research pipeline for designing and evaluating a daily
+multi-factor futures portfolio from minute-level TWAP data. The workflow covers
+data aggregation, factor construction, lagged signal generation, sector-level
+parameter selection, transaction-cost modeling, portfolio weighting, and
+held-out performance evaluation.
+
+The project demonstrates strong command of systematic strategy research and
+backtest design. Particular attention is paid to temporal alignment: parameters
+and sector choices are determined from the training sample, while the test period
+remains out of sample.
 
 > This is a sanitized portfolio version. The original dataset, source materials,
 > detailed trade records, personal information, and organization identifiers are
@@ -18,6 +26,15 @@ portfolio on a held-out period.
 - Commission and optional slippage deductions
 - Sharpe ratio, Calmar ratio, drawdown, win rate, and transaction statistics
 - Deterministic synthetic data generator for a reproducible public demo
+
+## Quantitative capabilities demonstrated
+
+- Engineered trend, volatility-compression, intraday-range, and rolling-z-score factors.
+- Designed symmetric long/short rules with explicit signal and execution lags.
+- Implemented sector-aware parameter selection without using test-period performance.
+- Supported equal-weight and inverse-volatility portfolio construction.
+- Modeled commission, slippage, turnover, Sharpe ratio, Calmar ratio, drawdown, and trade statistics.
+- Built a fully synthetic, deterministic demo so the public workflow remains reproducible without licensed data.
 
 ## Research flow
 
@@ -90,6 +107,16 @@ The optional `plot_equity_curve` helper additionally requires `matplotlib`.
 The following charts are aggregate outputs from one historical experiment. They
 are included to demonstrate the analysis workflow; exact reproduction requires
 the original licensed dataset, which is intentionally excluded.
+
+| Metric | Training sample | Held-out test sample |
+| --- | ---: | ---: |
+| Sharpe ratio | 1.6575 | 1.2182 |
+| Annualized return | 36.79% | 22.77% |
+| Maximum drawdown | — | -9.21% |
+
+The train-only selection procedure identified the metals and ferrous-materials
+groups as the two strongest sectors in this historical experiment. These numbers
+are reported as research evidence, not as a forecast of future performance.
 
 ![Train and test portfolio equity](assets/portfolio_equity.png)
 
