@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.matplotlib_cache/
+.DS_Store
+__MACOSX/
+
+# The source market data and generated outputs are intentionally excluded.
+data/
+results/
+*.feather
+*.parquet
+*.csv
+
+# LaTeX build artefacts from the private research report.
+*.aux
+*.log
+*.out
+*.synctex*
+*.toc
